@@ -1,19 +1,24 @@
 import express from 'express'
 import { 
+  validateCreateNote, 
+  validateEditNote 
+} from '../helpers/validationHelpers'
+import { 
   getAllNotes, 
   getNote, 
   getStats, 
-  createNote, 
-  editNote, 
-  deleteNote 
 } from '../services/noteService'
-import { validateCreateNote, validateEditNote } from '../helpers/validationHelpers'
+import { 
+  createNote, 
+  deleteNote, 
+  editNote 
+} from '../controllers/noteController'
 
 export const notesRouter = express.Router()
 
 notesRouter.get('/', getAllNotes)
-notesRouter.get('/:id', getNote)
 notesRouter.get('/stats', getStats)
+notesRouter.get('/:id', getNote)
 notesRouter.post('/', validateCreateNote, createNote)
 notesRouter.patch('/:id', validateEditNote, editNote)
 notesRouter.delete('/:id', deleteNote)
