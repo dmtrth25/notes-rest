@@ -6,7 +6,7 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const app = express()
-const PORT = process.env.PORT || 5555
+const PORT = process.env.PORT || 4444
 
 app.use(bodyParser.json())
 app.use('/notes', notesRouter)
